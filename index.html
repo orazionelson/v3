@@ -62,7 +62,7 @@
 		<div class="col-md-12">
 			<h1>v<sup>3</sup></h1>
 			<article>
-				<h2>How does it works.</h2>
+				<h2>How it works.</h2>
 				<p>v<sup>3</sup>, or vCube, is a script that builds a mail form and secures it by three levels of validation:</p>
 				<ul>
 					<li>Javascript Validation</li>
@@ -70,7 +70,7 @@
 					<li>PHP Validation</li>
 				</ul>
 				<p>Morevoer, the script filters the data before sending them.</p>
-				<div class="well">To do this v<sup>3</sup> merges the funcionalities of a javascript validator: <a href="http://1000hz.github.io/bootstrap-validator/">Bootstrap Validator</a>, and of a PHP validator: <a href="https://github.com/Wixel/GUMP">GUMP</a>. Adding some fuel with its own class: <a href="">Vcube</a>.</div>
+				<div class="well">To do this v<sup>3</sup> merges the funcionalities of a javascript validator: <a href="http://1000hz.github.io/bootstrap-validator/">Bootstrap Validator</a>, and of a PHP validator: <a href="https://github.com/Wixel/GUMP">GUMP</a>. Adding some fuel with its own class: <a href="https://github.com/orazionelson/v3/blob/master/inc/vcube.class.php">Vcube</a>.</div>
 				
 				<p>Everything is ruled by a configuration array at the beginning of the <mark>vcube</mark> class, where the <i>keys</i> are the attribute <code>name</code> of the form fields and the values are arrays with:</p> 
 				<ul>
@@ -110,7 +110,7 @@
 			<hr>
 			<article>	
 				<h2>Configure</h2>
-				<p>At the beginning of <mark>vcube.class.php</mark> file set the email variables.</p>
+				<p>At the beginning of <mark>vcube.class.php</mark> set the email variables.</p>
 				<pre><code>
 // Mail configuration
 protected static $mail_cnf = "to@mymail.com";
@@ -148,7 +148,7 @@ protected static $thanksPage = '';
 			<hr>
 			<article>
 				<h2>How to create a page with form</h2>
-				<p>The <a href="https://github.com/orazionelson/v3/blob/master/index.php">contact form template</a> file in the package is your starting point to build the page.<br>Basically:</p>
+				<p>The <a href="https://github.com/orazionelson/v3/blob/master/index.php">contact form template</a> in the package is your starting point to build the page.<br>Basically:</p>
 				<ol>
 					<li>Include and run v<sup>3</sup> at the beginning of your page.
 						<pre><code>

@@ -2,7 +2,7 @@
 
 <article>
 
-## How does it works.
+## How it works.
 
 vCube is a script that builds a mail form and secures it by three levels of validation:
 
