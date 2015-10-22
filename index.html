@@ -1,0 +1,236 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>A triple validation contact form in jQuery+PHP for Bootstrap</title>
+        <meta name="description" content="vCube is a contact form with three validation levels in jQuery+PHP for Bootstrap">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/freelancer.css" >
+
+		<!-- Custom Fonts -->
+		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+		<link rel="icon" href="img/favicon.png" type="image/png" />
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body id="page-top" class="index">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header page-scroll">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">v<sup>3</sup> form validator</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Header-->
+    <header>
+      <div class="container">       
+        <img src="img/cube.png" alt="Escher Cube" width="20%">
+			<div class="intro-text">
+			<span class="name">v<sup>3</sup></span>
+			<hr class="star-light">
+			<span class="skills">Contact form with a triple validation system for Bootstrap.</span>
+			</div>
+        <div style="margin-top:25px">
+			<a class="btn btn-primary btn-lg" href="#" role="button">Download zip</a></div>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+		<div class="col-md-12">
+			<h1>v<sup>3</sup></h1>
+			<article>
+				<h2>How does it works.</h2>
+				<p>v<sup>3</sup>, or vCube, is a script that builds a mail form and secures it by three levels of validation:</p>
+				<ul>
+					<li>Javascript Validation</li>
+					<li>PHP Anti spam tests</li>
+					<li>PHP Validation</li>
+				</ul>
+				<p>Morevoer, the script filters the data before sending them.</p>
+				<div class="well">To do this v<sup>3</sup> merges the funcionalities of a javascript validator: <a href="http://1000hz.github.io/bootstrap-validator/">Bootstrap Validator</a>, and of a PHP validator: <a href="https://github.com/Wixel/GUMP">GUMP</a>. Adding some fuel with its own class: <a href="">Vcube</a>.</div>
+				
+				<p>Everything is ruled by a configuration array at the beginning of the <mark>vcube</mark> class, where the <i>keys</i> are the attribute <code>name</code> of the form fields and the values are arrays with:</p> 
+				<ul>
+					<li>The data to build the form</li>
+					<li>The validation parameters for Js and PHP</li>
+					<li>The sanitization rules for each field</li>
+				</ul>
+				<p>Once the array is configured and the form is built, the data are validated <mark>on typing</mark> by an ajax call, if this validation passes (or javascript is disabled) the scripts validates the data via PHP.</p>
+				<p>The validation in PHP is made in two steps:</p>
+				<ul>
+					<li>Anti spam tests</li>
+					<li>Validation</li>
+				</ul>
+				<p>The Anti spam tests to pass are three:</p>
+				<ul>
+					<li>is not a bot,</li>
+					<li>hidden form field value,</li>
+					<li>the form is compiled in a time range (2-3600 seconds).</li>
+				</ul>
+				<p>If tests are ok, the script makes validation on the value of any single field using the valudation rules setted in the configuration array.</p>
+				<p>See the <a href="https://github.com/Wixel/GUMP">GUMP page in github</a> to understand better the validation rules.</p>
+				<p>Moreover <mark>v<sup>3</sup></mark> adds to GUMP two validation rules.</p>
+				<ul>
+					<li><mark>blacklist</mark>: validate against a list of words</li>
+					<li><mark>captcha</mark>: to validate the captcha</li>
+				</ul>
+			</article>
+			<hr>
+			<article>				
+			<h2>Install</h2>
+				<ul>
+					<li>First you need to have Bootstrap installed</li>
+					<li>Copy all the content of <mark>inc/</mark> direcory in your <mark>libraries</mark> or <mark>include folder</mark>.</li>
+					<li>Copy <mark>js/vendor/validation.js</mark> in your js folder.</li>
+				</ul>
+			</article>
+			<hr>
+			<article>	
+				<h2>Configure</h2>
+				<p>At the beginning of <mark>vcube.class.php</mark> file set the email variables.</p>
+				<pre><code>
+// Mail configuration
+protected static $mail_cnf = "to@mymail.com";
+protected static $site = "My site";
+protected static $thanksPage = '';
+				</code></pre>
+				<p>Then configure your form fields in the <mark>field_map</mark> array. Here's a sample of how a field can be configured.</p>
+				<pre><code>
+'name'=>array(
+	//Validation and Filtering options
+	'validation_rules'=>'required|max_len,65|min_len,3|valid_name|blacklist',
+	'filter_rules'=>'trim|sanitize_string',
+	//Field options
+	//If label is omitted the default is the field name with first letter capitalized.
+	//If the field is 'required' the script will show an * after the label
+	'label'=>'Name',
+	//type: input/text' is the default value, it can be omitted 
+	'type'=>'input/text', 
+	//placeholder, has a default value
+	'placeholder'=>'Your name',
+	//class, has a default value and can be omitted
+	'class'=>'form-control',
+	//Specific attributes for Bootstrap Validator
+	'data-minlength-error'=>'The field needs to be 3 or longer in length.',  
+	'data-remote'=>'inc/verify.php',
+	'data-remote-error'=>'The Name field is invalid',
+)
+				</code></pre>					
+				<p>How to write the <code>validation_rules</code> and the <code>filter_rules</code> is described in <a href="https://github.com/Wixel/GUMP">GUMP (the class used to make PHP validation)</a>.</p>
+				<p>Edit the <code>type</code> key to define the input field value in html, do in this way: input/text, input/email, input/url, input/number or textarea</p>	
+				<p>Set the <code>placeholder</code> and <code>class</code> as in simple HTML</p>
+				<p>Add <code>data-minlength-error</code> key if you used <code>min_len</code> in <code>validation_rules</code></p>
+				<p>Add <code>'data-remote'=>'inc/verify.php'</code> (and <code>'data-remote-error'=>'Error message...'</code>) if you want to use GUMP filter in Javascript Validation, for example: <code>alpha_numeric</code>, <code>blacklist</code> or <code>captcha</code>.</p>
+			</article>
+			<hr>
+			<article>
+				<h2>How to create a page with form</h2>
+				<p>The <a href="">contact_form_template.php</a> file in the package is your starting point to build the page.<br>Basically:</p>
+				<ol>
+					<li>Include and run v<sup>3</sup> at the beginning of your page.
+						<pre><code>
+	require "inc/vcube.class.php";
+	$vcube = new Vcube();
+	$messages=$vcube->vcube_run();
+						</code></pre>
+					</li>
+					<li>Build the form inside the page.
+						<pre><code>
+	$vcube->build_form($messages); 					
+						</code></pre>						
+					</li>
+					<li>Do not forget to include the <mark>Bootstrap validator js</mark> in your script section, usually after Bootstrap.
+						<pre><code>
+	&lt;script src="js/vendor/validator.js"&gt;&lt;/script&gt;					
+						</code></pre>
+					</li>
+				</ol>
+			</article>
+			<hr>
+			<article>
+				<h2>Dependencies</h2>
+				<ul>
+				  <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+				  <li><a href="http://1000hz.github.io/bootstrap-validator/">Bootstrap Validator</a></li>
+				  <li><a href="https://github.com/Wixel/GUMP">GUMP PHP Validator</a></li>
+				  <li><a href="https://github.com/claviska/simple-php-captcha">A PHP script for captcha</a></li>
+				</ul>
+			</article>
+			<hr>	
+			<article>	
+				<h2>Sources for code and inspiration</h2>
+				<ul>
+				  <li><a href="https://github.com/jemjabella/PHP-Mail-Form/blob/master/mail_form_v2.txt">A PHP script for mail form validation</a></li>
+				  <li><a href="https://github.com/mccarthy/phpFormProtect/tree/master/phpfp">A PHP class for mail form testing</a></li>
+				  <li><a href="http://www.abeautifulsite.net/a-simple-php-captcha-script/ and https://github.com/claviska/simple-php-captcha">A PHP script for captcha</a></li>
+				  <li><a href="http://www.sitepoint.com/easy-spam-prevention-using-hidden-form-fields/">A post about hidden form field</a></li>
+				  <li><a href="http://nfriedly.com/techblog/2009/11/how-to-build-a-spam-free-contact-forms-without-captchas/">A post about spam prevenction</a></li>
+	          </ul>		
+	        </article> 
+		</div>
+      </div>
+	
+      <hr>
+
+    </div> <!-- /container -->        
+	<footer class="text-center">
+		<div class="footer-below">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+			MIT License &copy; <a href="mailto:alfredo.cosco@gmail.com">Alfredo Cosco</a> 2015
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+        
+        <!-- Plugin JavaScript -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+		<script src="js/vendor/classie.js"></script>
+		<script src="js/vendor/cbpAnimatedHeader.js"></script>
+        
+        <!-- Custom Theme JavaScript -->
+		<script src="js/vendor/freelancer.js"></script>
+		
+
+        <script src="js/plugins.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!--script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script-->
+    </body>
+</html>
