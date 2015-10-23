@@ -72,7 +72,7 @@ class Vcube extends GUMP{
 	}
 	
 	public function vcube_run(){
-			session_start();//need to stard a session to create a captcha
+			if (session_status() !== PHP_SESSION_ACTIVE) {session_start();}///need to stard a session to create a captcha
 
 			if(!$_SESSION['captcha']['code']){
 				header("Refresh:0");
