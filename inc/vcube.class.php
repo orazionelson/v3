@@ -344,7 +344,7 @@ class Vcube extends GUMP{
 						<div class="col-sm-offset-3 col-sm-9">
 							<input type="submit" id="submit-form" name="send" value="Send" class="btn btn-default" ';
 						if (isset($disable) && $disable === true) $html.= ' disabled="disabled"';
-			$html.=	'</div></div>';
+			$html.=	'></div></div>';
 
 			//End the form
 			$html.="</form>";
